@@ -2,10 +2,13 @@ package com.example.medicare
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
+import android.util.Patterns
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -21,73 +24,70 @@ class signup : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         enableEdgeToEdge()
         setContentView(R.layout.activity_signup)
-        val fullNameLayout = findViewById<TextInputLayout>(R.id.FullName)
-        val emailLayout = findViewById<TextInputLayout>(R.id.Email)
-        val passwordLayout = findViewById<TextInputLayout>(R.id.Password)
-        val numberLayout = findViewById<TextInputLayout>(R.id.Number)
 
-        // Set hints dynamically
-        fullNameLayout.hint = "Full Name"
-        emailLayout.hint = "Email"
-        passwordLayout.hint = "Password"
-        numberLayout.hint = "Number"
-
-        // Get EditText inside TextInputLayouts
-        val fullNameInput = fullNameLayout.editText as TextInputEditText
-        val emailInput = emailLayout.editText as TextInputEditText
-        val passwordInput = passwordLayout.editText as TextInputEditText
-        val numberInput = numberLayout.editText as TextInputEditText
-
+        val fullName = findViewById<TextInputEditText>(R.id.Name)
+        val email = findViewById<TextInputEditText>(R.id.Email)
+        val password = findViewById<TextInputEditText>(R.id.password)
+        val number = findViewById<TextInputEditText>(R.id.Number)
         val signupButton = findViewById<Button>(R.id.button)
         val loginText = findViewById<TextView>(R.id.Login)
 
+        // Signup Button Click
         signupButton.setOnClickListener {
-            val fullName = fullNameInput.text?.toString()?.trim()
-            val email = emailInput.text?.toString()?.trim()
-            val password = passwordInput.text?.toString()?.trim()
-            val number = numberInput.text?.toString()?.trim()
-
-            var isValid = true
-
-            if (fullName.isNullOrEmpty()) {
-                fullNameLayout.error = "Enter Full Name"
-                isValid = false
-            } else {
-                fullNameLayout.error = null
-            }
-
-            if (email.isNullOrEmpty()) {
-                emailLayout.error = "Enter Email"
-                isValid = false
-            } else {
-                emailLayout.error = null
-            }
-
-            if (password.isNullOrEmpty()) {
-                passwordLayout.error = "Enter Password"
-                isValid = false
-            } else {
-                passwordLayout.error = null
-            }
-
-            if (number.isNullOrEmpty()) {
-                numberLayout.error = "Enter Number"
-                isValid = false
-            } else {
-                numberLayout.error = null
-            }
-
-            if (isValid) {
-                val intent = Intent(this, home::class.java)
+            if (validateInput(fullName, email, password, number)) {
+                Toast.makeText(this, "Signup Successful", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, home::class.java) // Navigate to Home
                 startActivity(intent)
                 finish()
             }
         }
 
+        // Login Text Click
         loginText.setOnClickListener {
             val intent = Intent(this, login::class.java)
             startActivity(intent)
-            finish()
         }
+    }
+
+    private fun validateInput(
+        fullName: TextInputEditText,
+        email: TextInputEditText,
+        password: TextInputEditText,
+        number: TextInputEditText
+    ): Boolean {
+        val name = fullName.text.toString().trim()
+        val emailText = email.text.toString().trim()
+        val passwordText = password.text.toString().trim()
+        val numberText = number.text.toString().trim()
+
+        if (TextUtils.isEmpty(name)) {
+            fullName.error = "Full Name is required"
+            showToast("Full Name is required")
+            return false
+        }
+
+        if (TextUtils.isEmpty(emailText) || !Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
+            email.error = "Enter a valid email"
+            showToast("Enter a valid email")
+            return false
+        }
+
+        if (TextUtils.isEmpty(passwordText) || passwordText.length < 6) {
+            password.error = "Password must be at least 6 characters"
+            showToast("Password must be at least 6 characters")
+            return false
+        }
+
+        if (TextUtils.isEmpty(numberText) || numberText.length != 10 || !numberText.matches(Regex("\\d{10}"))) {
+            number.error = "Enter a valid 10-digit number"
+            showToast("Enter a valid 10-digit number")
+            return false
+        }
+
+        return true
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }
