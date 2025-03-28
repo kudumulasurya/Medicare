@@ -84,6 +84,7 @@
             app:boxCornerRadiusBottomEnd="10dp"
             app:hintTextColor="#183E9F"
             app:endIconMode="clear_text"
+            app:startIconTint="@android:color/black"
             app:startIconDrawable="@drawable/baseline_person_24">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -114,6 +115,7 @@
             app:hintTextColor="#183E9F"
             app:startIconDrawable="@drawable/baseline_email_24"
             app:endIconMode="clear_text"
+            app:startIconTint="@android:color/black"
             android:hint="Email">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -142,6 +144,7 @@
             app:boxCornerRadiusBottomEnd="10dp"
             app:hintTextColor="#183E9F"
             app:endIconMode="clear_text"
+            app:startIconTint="@android:color/black"
             app:startIconDrawable="@drawable/baseline_key_24"
             android:hint="Password">
 
@@ -171,6 +174,7 @@
             app:boxCornerRadiusBottomEnd="10dp"
             app:hintTextColor="#183E9F"
             app:endIconMode="clear_text"
+            app:startIconTint="@android:color/black"
             app:startIconDrawable="@drawable/baseline_phone_24"
             android:hint="Number"
             >

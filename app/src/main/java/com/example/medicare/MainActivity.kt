@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, signup::class.java))
+            startActivity(Intent(this, login::class.java))
             finish()
         }, 3000)
     }
