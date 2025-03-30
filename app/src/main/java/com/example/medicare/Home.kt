@@ -1,8 +1,7 @@
-@file:Suppress("DEPRECATION")
-
 package com.example.medicare
 
 
+import android.R.id.home
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
@@ -17,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class home : AppCompatActivity() {
+class Home : AppCompatActivity() {
     @SuppressLint("ClickableViewAccessibility", "UseKtx")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

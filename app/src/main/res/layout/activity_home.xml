@@ -9,7 +9,7 @@
     android:background="#FFFFFF"
     android:fitsSystemWindows="false"
 
-    tools:context=".home">
+    tools:context=".Home">
 
     <RelativeLayout
         android:id="@+id/hyd"

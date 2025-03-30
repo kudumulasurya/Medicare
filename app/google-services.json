@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "824107101821",
+    "firebase_url": "https://medicare-c445c-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "medicare-c445c",
     "storage_bucket": "medicare-c445c.firebasestorage.app"
   },

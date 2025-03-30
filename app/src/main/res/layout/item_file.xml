@@ -11,22 +11,18 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical">
 
         <!-- Card-like Hospital Info Container -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="2dp"
             android:background="#FFFFFF"
             android:orientation="horizontal"
             android:padding="12dp"
             android:elevation="4dp"
-            android:layout_margin="8dp"
+
             app:cardCornerRadius="16dp" >
 
             <!-- Doctor Image -->
