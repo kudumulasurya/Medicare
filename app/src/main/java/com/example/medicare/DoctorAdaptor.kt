@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import kotlin.jvm.java
 
-class ItemAdaptor(private var dataList: List<DoctorModel>, private val context: Context) :
-    RecyclerView.Adapter<ItemAdaptor.ViewHolder>() {
+class DoctorAdaptor(private var doctorList: List<DoctorModel>, private val context: Context) :
+    RecyclerView.Adapter<DoctorAdaptor.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val image: ImageView = view.findViewById(R.id.doctorimg)
@@ -29,10 +29,10 @@ class ItemAdaptor(private var dataList: List<DoctorModel>, private val context: 
         return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int = dataList.size
+    override fun getItemCount(): Int = doctorList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val doctorItem = dataList[position]
+        val doctorItem = doctorList[position]
         holder.image.setImageResource(doctorItem.image)
         holder.hospital.text = doctorItem.hospitalName
         holder.doctor.text = doctorItem.doctorName
@@ -41,18 +41,20 @@ class ItemAdaptor(private var dataList: List<DoctorModel>, private val context: 
         holder.fees.text = doctorItem.fees
 
         holder.bookButton.setOnClickListener {
-            val intent = Intent(context, appointment::class.java).apply {
+            val intent = Intent(context, AppointmentActivity::class.java).apply {
                 putExtra("doctor_name", doctorItem.doctorName)
                 putExtra("hospital_name", doctorItem.hospitalName)
                 putExtra("experience", doctorItem.experience)
+                putExtra("rating", doctorItem.rating)
                 putExtra("fees", doctorItem.fees)
+                putExtra("image", doctorItem.image)
             }
             context.startActivity(intent)
         }
     }
 
     fun updateList(newList: List<DoctorModel>) {
-        dataList = newList
+        doctorList = newList
         notifyDataSetChanged()
     }
 }

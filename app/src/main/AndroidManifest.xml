@@ -30,7 +30,7 @@
             android:name=".SearchActivity"
             android:exported="true" />
         <activity
-            android:name=".appointment"
+            android:name=".AppointmentActivity"
             android:exported="true" />
         <activity
             android:name=".Login"

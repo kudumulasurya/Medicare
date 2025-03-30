@@ -1,19 +1,19 @@
 package com.example.medicare
 
-
 import android.R.id.home
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
-
 import android.view.WindowManager
 import android.view.animation.AlphaAnimation
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class Home : AppCompatActivity() {
@@ -26,11 +26,6 @@ class Home : AppCompatActivity() {
         val cardView = findViewById<CardView>(R.id.card)
         val detailsLayout = findViewById<View>(R.id.details_layout)
 
-        val book1Button = findViewById<Button>(R.id.book1)
-        val book2Button = findViewById<Button>(R.id.book2)
-        val book3Button = findViewById<Button>(R.id.book3)
-        val book4Button = findViewById<Button>(R.id.book4)
-
         val feverImageView = findViewById<ImageView>(R.id.fever)
         val coldImageView = findViewById<ImageView>(R.id.cold)
         val coughImageView = findViewById<ImageView>(R.id.cough)
@@ -40,17 +35,21 @@ class Home : AppCompatActivity() {
 
         val bottomNavView = findViewById<BottomNavigationView>(R.id.bottom_nav)
         detailsLayout.visibility = View.GONE
+
         fun showDetails() {
             detailsLayout.visibility = View.VISIBLE
             detailsLayout.startAnimation(AlphaAnimation(0f, 1f).apply { duration = 300 })
         }
+
         fun hideDetails() {
             detailsLayout.startAnimation(AlphaAnimation(1f, 0f).apply { duration = 300 })
             detailsLayout.postDelayed({ detailsLayout.visibility = View.GONE }, 300)
         }
+
         cardView.setOnClickListener {
             if (detailsLayout.visibility == View.GONE) showDetails() else hideDetails()
         }
+
         findViewById<View>(android.R.id.content).setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN && detailsLayout.visibility == View.VISIBLE) {
                 hideDetails()
@@ -58,41 +57,12 @@ class Home : AppCompatActivity() {
             false
         }
 
-
-
-        book1Button.setOnClickListener {
-            navigateToAppointmentPage()
-        }
-        book2Button.setOnClickListener {
-            navigateToAppointmentPage()
-        }
-        book3Button.setOnClickListener {
-            navigateToAppointmentPage()
-        }
-        book4Button.setOnClickListener {
-            navigateToAppointmentPage()
-        }
-
-
-        feverImageView.setOnClickListener {
-            navigateToAppointmentPage()
-        }
-        coldImageView.setOnClickListener {
-            navigateToAppointmentPage()
-        }
-        coughImageView.setOnClickListener {
-            navigateToAppointmentPage()
-        }
-        painImageView.setOnClickListener {
-            navigateToAppointmentPage()
-        }
-        dentalImageView.setOnClickListener {
-            navigateToAppointmentPage()
-        }
-        skinImageView.setOnClickListener {
-            navigateToAppointmentPage()
-        }
-
+        feverImageView.setOnClickListener { navigateToAppointmentPage() }
+        coldImageView.setOnClickListener { navigateToAppointmentPage() }
+        coughImageView.setOnClickListener { navigateToAppointmentPage() }
+        painImageView.setOnClickListener { navigateToAppointmentPage() }
+        dentalImageView.setOnClickListener { navigateToAppointmentPage() }
+        skinImageView.setOnClickListener { navigateToAppointmentPage() }
 
         bottomNavView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -115,10 +85,24 @@ class Home : AppCompatActivity() {
                 else -> false
             }
         }
+
+        // **RecyclerView Setup**
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        val doctorList = mutableListOf(
+            DoctorModel(R.drawable.img_10, "Dr. Devaraj Eye Hospital", "Dr. Devaraj M", "Ophthalmologist - 14 years experience", "★★★★★ 45 reviews", "₹300 Consultation Fees"),
+            DoctorModel(R.drawable.img_11, "Hope Hospital", "Dr. Krishna Kumar", "Orthopedist - 18 years experience", "★★★★ 31 reviews", "₹400 Consultation Fees"),
+            DoctorModel(R.drawable.img_12, "Chisel Dental", "Dr. Deepthi", "Dentist - 21 years experience", "★★★★ 35 reviews", "₹500 Consultation Fees"),
+            DoctorModel(R.drawable.img_13, "Children Hospital", "Dr. Mallesh", "Pediatrician - 20 years experience", "★★★★ 20 reviews", "₹300 Consultation Fees")
+        )
+
+        val adapter = DoctorAdaptor(doctorList, this)
+        recyclerView.adapter = adapter
     }
 
     private fun navigateToAppointmentPage() {
-        val intent = Intent(this, appointment::class.java)
+        val intent = Intent(this, AppointmentActivity::class.java)
         startActivity(intent)
     }
 
@@ -138,8 +122,7 @@ class Home : AppCompatActivity() {
     }
 
     private fun navigateToHomePage() {
-        val intent = Intent(this, home::class.java)
+        val intent = Intent(this, Home::class.java)
         startActivity(intent)
     }
-
 }

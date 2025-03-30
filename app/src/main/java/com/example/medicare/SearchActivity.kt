@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class SearchActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var itemAdapter: ItemAdaptor
+    private lateinit var itemAdapter: DoctorAdaptor
     private lateinit var dataList: MutableList<DoctorModel>
     private lateinit var searchView: SearchView
     private lateinit var filteredList: MutableList<DoctorModel>
@@ -35,7 +35,7 @@ class SearchActivity : AppCompatActivity() {
         )
 
         filteredList = mutableListOf()
-        itemAdapter = ItemAdaptor(filteredList, this)
+        itemAdapter = DoctorAdaptor(filteredList, this)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = itemAdapter
