@@ -1,14 +1,17 @@
 package com.example.medicare
 
-import android.R.id.home
+
+import android.graphics.Color
+
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
 import android.view.animation.AlphaAnimation
-import android.widget.Button
+
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
@@ -35,6 +38,7 @@ class Home : AppCompatActivity() {
 
         val bottomNavView = findViewById<BottomNavigationView>(R.id.bottom_nav)
         detailsLayout.visibility = View.GONE
+        bottomNavView.backgroundTintList = ColorStateList.valueOf(Color.TRANSPARENT)
 
         fun showDetails() {
             detailsLayout.visibility = View.VISIBLE
