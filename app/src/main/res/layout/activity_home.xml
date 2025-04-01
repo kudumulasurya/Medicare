@@ -10,7 +10,13 @@
     android:fitsSystemWindows="false"
 
     tools:context=".Home">
-
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
     <RelativeLayout
         android:id="@+id/hyd"
         android:layout_width="match_parent"
@@ -460,6 +466,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation"
+        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
         >
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

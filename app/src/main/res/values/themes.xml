@@ -6,4 +6,7 @@
     </style>
 
     <style name="Theme.MediCare" parent="Base.Theme.MediCare" />
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+            <item name="android:color">@color/white</item>
+    </style>
 </resources>
