@@ -39,7 +39,7 @@
             android:name=".Login"
             android:exported="true" />
         <activity
-            android:name=".Home"
+            android:name=".Navigation"
             android:exported="true" />
         <activity
             android:name=".Signup"

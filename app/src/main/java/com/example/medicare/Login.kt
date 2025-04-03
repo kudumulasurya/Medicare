@@ -3,7 +3,6 @@ package com.example.medicare
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.TextView
@@ -155,7 +154,7 @@ class Login : AppCompatActivity() {
     }
 
     private fun navigateToHome() {
-        val intent = Intent(this, Home::class.java)
+        val intent = Intent(this, Navigation::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()

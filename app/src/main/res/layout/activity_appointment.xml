@@ -23,7 +23,7 @@
         tools:ignore="MissingConstraints">
 
         <ImageView
-            android:id="@+id/ivBack"
+            android:id="@+id/Back"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:src="@drawable/baseline_arrow_back_ios_24"

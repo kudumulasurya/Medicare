@@ -90,7 +90,7 @@ class Signup : AppCompatActivity() {
     }
 
     private fun navigateToHome() {
-        val intent = Intent(this, Home::class.java)
+        val intent = Intent(this, Navigation::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()

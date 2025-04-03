@@ -13,9 +13,6 @@ class AppointmentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_appointment)
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-
-
-
         val doctorImage = intent.getIntExtra("image", 0)
         val hospitalName = intent.getStringExtra("hospital_name")
         val doctorName = intent.getStringExtra("doctor_name")
@@ -30,6 +27,10 @@ class AppointmentActivity : AppCompatActivity() {
         val Rating = findViewById<TextView>(R.id.rating)
         val Fees = findViewById<TextView>(R.id.tvConsultationFee)
         val ChangeDoctor = findViewById<Button>(R.id.btnChangeDoctor)
+        val Back = findViewById<ImageView>(R.id.Back)
+        Back.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
 
 
         DoctorProfile.setImageResource(doctorImage)
