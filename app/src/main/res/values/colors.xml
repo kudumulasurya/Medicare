@@ -9,6 +9,13 @@
     <color name="track_off">#D3D3D3</color>  <!-- Gray when OFF -->
     <color name="thumb_on">#64B5F6</color>  <!-- White when ON -->
     <color name="thumb_off">#808080</color>  <!-- Dark Gray when OFF -->
+    <color name="primary_blue">#183E9F</color>
+    <color name="gray_tab">#848484</color>
+    <color name="green_on">#66BB6A</color>
+    <color name="dark_green">#2E7D32</color>
+    <color name="gray_off">#BDBDBD</color>
+
+
 
 
 </resources>

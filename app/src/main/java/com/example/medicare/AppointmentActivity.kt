@@ -5,6 +5,7 @@ import android.view.WindowManager
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class AppointmentActivity : AppCompatActivity() {
@@ -28,9 +29,14 @@ class AppointmentActivity : AppCompatActivity() {
         val Fees = findViewById<TextView>(R.id.tvConsultationFee)
         val ChangeDoctor = findViewById<Button>(R.id.btnChangeDoctor)
         val Back = findViewById<ImageView>(R.id.Back)
+        val payment = findViewById<Button>(R.id.btnProceedToPayment)
         Back.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
+        payment.setOnClickListener{
+            Toast.makeText(this, "Payment Successful", Toast.LENGTH_SHORT).show()
+        }
+
 
 
         DoctorProfile.setImageResource(doctorImage)

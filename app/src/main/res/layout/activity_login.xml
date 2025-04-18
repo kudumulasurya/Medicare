@@ -111,6 +111,7 @@
             app:boxCornerRadiusTopStart="10dp"
             app:boxStrokeColor="#64EBB6"
             app:boxStrokeWidth="2dp"
+
             app:endIconMode="clear_text"
             app:hintTextColor="#183E9F"
             app:startIconDrawable="@drawable/baseline_key_24"

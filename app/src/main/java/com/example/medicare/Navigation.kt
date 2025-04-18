@@ -29,7 +29,7 @@ class Navigation : AppCompatActivity() {
                     true
                 }
                 R.id.alarm ->{
-                    replaceFragment(Remind())
+                    replaceFragment(Documinder())
                     true
                 }
                 R.id.profile ->{
